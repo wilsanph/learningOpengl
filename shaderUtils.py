@@ -13,6 +13,9 @@ class Program():
 
 		self.id = glShaders.compileProgram( vtShaderId, frgShaderId )
 
+		glShaders.glDeleteShader( vtShaderId )
+		glShaders.glDeleteShader( frgShaderId )
+
 		print 'created shader program with program id: ' , self.id
 
 	def loadShader( self, shaderSrcFile ):

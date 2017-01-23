@@ -52,8 +52,6 @@ def main():
 
     glBindVertexArray( 0 )
 
-
-
     while not glfw.window_should_close( window ):
          
         glClearColor( 0.2, 0.3, 0.2, 1.0 )
@@ -63,8 +61,11 @@ def main():
 
         timeVal = glfw.get_time()
         greenValue = 0.5 * math.sin( timeVal ) + 0.5
+        xOffVal = math.sin( timeVal )
         u_color = glGetUniformLocation( shaderProgram.id, 'u_color' )
+        u_offset = glGetUniformLocation( shaderProgram.id, 'u_offset')
         glUniform4f( u_color, 0.0, greenValue, 0.0, 1.0 )
+        glUniform1f( u_offset, xOffVal )
 
         glBindVertexArray( VAO )
         glDrawArrays( GL_TRIANGLES, 0, 6 )        
